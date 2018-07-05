@@ -14,8 +14,7 @@ from asyncio import sleep
 @commands.has_role('|| 𝕰lite 𝕾taff ||')
 async def report(ctx, *, message):
     await ctx.message.delete()
-    await ctx.guild.get_member(405337137735663618).send(f"""{ctx.author.name} a raportat:
-{message}""")
+    await ctx.guild.get_member(405337137735663618).send(f"{ctx.author.name} a raportat: {message}")
 
 logging.basicConfig(level='INFO')
 bot = commands.Bot(command_prefix='e!')
