@@ -51,6 +51,11 @@ async def kick(ctx, member: discord.Member = None, *, reason = None):
 async def botcheck(ctx):
     return not ctx.message.author.bot
 
+@bot.command()
+@commands.has_role('|| 𝕰lite 𝕾taff ||')
+async def report(ctx, *, message):
+    await ctx.message.delete()
+    await ctx.guild.get_member(405337137735663618).send(f"{ctx.author.name} a raportat: {message}")
 
 @commands.cooldown(1, 5, commands.BucketType.user)     
 @bot.command()
