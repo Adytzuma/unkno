@@ -10,9 +10,6 @@ import os
 from discord import opus
 from asyncio import sleep
 
-@bot.command()
-async def support(ctx):
-      await ctx.send('https://discord.gg/7H9FKNE')
 
 logging.basicConfig(level='INFO')
 bot = commands.Bot(command_prefix='f?')
@@ -130,7 +127,9 @@ async def on_command_error(ctx, error):
     fmt = 'Error in command {}\n\n{}:\n\n{}\n'.format(ctx.command, type(error).__name__, tb)
     print(fmt)
 
-
+@bot.command()
+async def support(ctx):
+      await ctx.send('https://discord.gg/7H9FKNE')
 
 
 @commands.cooldown(1, 5, commands.BucketType.user)
