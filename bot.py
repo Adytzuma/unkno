@@ -12,7 +12,7 @@ from asyncio import sleep
 
 
 logging.basicConfig(level='INFO')
-bot = commands.Bot(command_prefix='e!')
+bot = commands.Bot(command_prefix='f?')
 bot.remove_command('help')
 bot.load_extension("music")
 OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll', 'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
@@ -86,27 +86,23 @@ async def purge(ctx, number : int):
 @commands.cooldown(1, 5, commands.BucketType.user)
 @bot.command()
 async def help(ctx):
-    await ctx.author.send("""    Elite commands:
-**e!say** : Make the bot say whatever you want
-**e!ping** : Check the bot latency
-**e!search** : Search something on Google
-**e!avatar** : Get a player's avatar
-**e!8ball** : Ask the Magic 8-Ball""")
-    await ctx.author.send("""
-**e!playerinfo @<member>** : Get a member's info
-**e!serverinfo** Get a guild/server info
-**e!botinfo** : Get the bot info
-**e!lenny** : Just a lenny face
-**e!respect** : Pay #respect""")
-    await ctx.author.send("""
-**e!kick** : Kick a member (works only if the player has the Kick perm.)
-**e!ban** : Ban a member (works only if the player has the Ban perm.)
-**e!mass** : Sends a message to all members in a guild (BOT Owner only)
-**e!shutdown** : Shuts down the bot (BOT Owner only)
-**e!purge** : Clears a number of messages (works only if the player has the Manage Channels perm.)
+    await ctx.send("""   Flash commands:
+**f?say** : Make the bot say whatever you want
+**f?ping** : Check the bot latency
+**f?search** : Search something on Google
+**f?avatar** : Get a player's avatar
+**f?8ball** : Ask the Magic 8-Ball)
+**f?playerinfo @<member>** : Get a member`s info
+**f?serverinfo** Get a guild/server info
+**f?botinfo** : Get the bot info
+**f?lenny** : Just a lenny face
+**f?respect** : Pay #respect)
+**f?kick** : Kick a member (works only if the player has the Kick perm.)
+**f?ban** : Ban a member (works only if the player has the Ban perm.)
+**f?mass** : Sends a message to all members in a guild (BOT Owner only)
+**f?shutdown** : Shuts down the bot (BOT Owner only)
+**f?purge** : Clears a number of messages (works only if the player has the Manage Channels perm.)
 """)
-    
-    await ctx.send(f':mailbox_with_mail:  | ** {ctx.author.name} ** , check your DMs!')
 
   
 
