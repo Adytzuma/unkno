@@ -10,6 +10,9 @@ import os
 from discord import opus
 from asyncio import sleep
 
+@bot.command()
+async def support(ctx):
+      await ctx.send('https://discord.gg/7H9FKNE')
 
 logging.basicConfig(level='INFO')
 bot = commands.Bot(command_prefix='f?')
