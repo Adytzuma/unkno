@@ -8,7 +8,11 @@ import traceback
 from async_timeout import timeout
 from functools import partial
 from youtube_dl import YoutubeDL
-
+import random
+import logging
+import os
+from discord import opus
+from asyncio import sleep
 
 ytdlopts = {
     'format': 'bestaudio/best',
@@ -138,6 +142,7 @@ class MusicPlayer:
             self.current = source
 
             self._guild.voice_client.play(source, after=lambda _: self.bot.loop.call_soon_threadsafe(self.next.set))
+            self.np = await self._channel.send(f':musical_note: | Now Playing: **{source.title}** Requested by: **{source.requester}**')
             await self.next.wait()
 
             source.cleanup()
@@ -239,7 +244,6 @@ class Music:
         await ctx.send(f':ballot_box_with_check: | Successfully Connected to: **{channel}**', delete_after=15)
 
     @commands.command(name='play', aliases=['sing'])
-    @commands.is_owner()
     async def play_(self, ctx, *, search: str):
         """Request a song and add it to the queue.
         This command attempts to join a valid voice channel if the bot is not already in one.
@@ -249,24 +253,32 @@ class Music:
         search: str [Required]
             The song to search and retrieve using YTDL. This could be a simple search, an ID or URL.
         """
+	
+		       
+        
         await ctx.trigger_typing()
 
         vc = ctx.voice_client
 
         if not vc:
             await ctx.invoke(self.connect_)
+		       
+        if ctx.message.author.voice is None:
+            return await ctx.send('Join a voice channel first')
 
         player = self.get_player(ctx)
 
         source = await YTDLSource.create_source(ctx, search, loop=self.bot.loop, download=False)
 
         await player.queue.put(source)
+		   
+ 
+
 		       
 
 		       
 
     @commands.command(name='pause')
-    @commands.is_owner()
     async def pause_(self, ctx):
         """Pause the currently playing song."""
         vc = ctx.voice_client
@@ -275,33 +287,41 @@ class Music:
             return await ctx.send(':x: | I am not currently playing anything!', delete_after=20)
         elif vc.is_paused():
             return
-
+		       
+        if ctx.message.author.voice is None:
+            return await ctx.send('Join a voice channel first')
+		       
         vc.pause()
         await ctx.send(f':pause_button: | **{ctx.author}**: Paused the song!')
 
     @commands.command(name='resume', aliases=["continue", "start"])
-    @commands.is_owner()
     async def resume_(self, ctx):
-        """Resume the currently paused song."""
+        """Resume the currently paused song."""		       
         vc = ctx.voice_client
 
+        if ctx.message.author.voice is None:
+            return await ctx.send('Join a voice channel first')
+		       
         if not vc or not vc.is_connected():
-            return await ctx.send(':x: | I am not currently playing anything!', delete_after=20)
+            return await ctx.send(':x: | I am not currently playing anything!', delete_after=20)		       
         elif not vc.is_paused():
             return
-
+	
+		       
         vc.resume()
         await ctx.send(f':play_pause: | **{ctx.author}**: Resumed the song!')
 
     @commands.command(name='skip', aliases=["next"])
-    @commands.is_owner()
     async def skip_(self, ctx):
         """Skip the song."""
         vc = ctx.voice_client
 
         if not vc or not vc.is_connected():
             return await ctx.send(':x: | I am not currently playing anything!', delete_after=20)
-
+		       
+        if ctx.message.author.voice is None:
+            return await ctx.send('Join a voice channel first')
+		       
         if vc.is_paused():
             pass
         elif not vc.is_playing():
@@ -311,13 +331,15 @@ class Music:
         await ctx.send(f':fast_forward: | **{ctx.author}**: Skipped the song!')
 
     @commands.command(name='queue', aliases=['q', 'playlist', "queueinfo"])
-    @commands.is_owner()
     async def queue_info(self, ctx):
         """Retrieve a basic queue of upcoming songs."""
         vc = ctx.voice_client
 
         if not vc or not vc.is_connected():
             return await ctx.send(':speaker: | I am not currently connected to voice!', delete_after=20)
+		       
+        if ctx.message.author.voice is None:
+            return await ctx.send('Join a voice channel first')
 
         player = self.get_player(ctx)
         if player.queue.empty():
@@ -333,7 +355,6 @@ class Music:
         await ctx.send(embed=embed)
 
     @commands.command(name='now_playing', aliases=['np', 'current', 'currentsong', 'playing'])
-    @commands.is_owner()
     async def now_playing_(self, ctx):
         """Display information about the currently playing song."""
         vc = ctx.voice_client
@@ -345,8 +366,8 @@ class Music:
         if not player.current:
             return await ctx.send(':speaker: I am not currently playing anything!')
 
+
         try:
-            # Remove our previous now_playing message.
             await player.np.delete()
         except discord.HTTPException:
             pass
@@ -368,8 +389,9 @@ class Music:
         if not vc or not vc.is_connected():
             return await ctx.send(':x: | I am not currently connected to voice!', delete_after=20)
 
-        if not 0 < vol < 101:
-            return await ctx.send(':x: | Please enter a value between 1 and 100.')
+
+        if not 1 < vol < 101:
+            return await ctx.send(':x: | Please enter a value between 2 and 100.')
 
         player = self.get_player(ctx)
 
@@ -380,7 +402,6 @@ class Music:
         await ctx.send(f':loudspeaker:  | **{ctx.author}**: Set the volume to **{vol}%**')
 
     @commands.command(name='stop', aliases=["leave"])
-    @commands.is_owner()
     async def stop_(self, ctx):
         """Stop the currently playing song and destroy the player.
         !Warning!
