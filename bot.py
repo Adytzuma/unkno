@@ -208,7 +208,7 @@ async def avatar(ctx, member: discord.Member=None):
 @bot.command()
 async def invite(ctx):
     """Gives you the BOT invite link."""
-    await ctx.send(f"Invite  **{ctx.me.name}** here: https://discordapp.com/api/oauth2/authorize?client_id=463983969000751114&permissions=8&scope=bot")
+    await ctx.send(f"Invite  **{ctx.me.name}** https://discordapp.com/api/oauth2/authorize?client_id=464711725589987338&permissions=8&scope=bot")
 
 @commands.cooldown(1, 5, commands.BucketType.user)
 @bot.command()
