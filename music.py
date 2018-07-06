@@ -142,7 +142,7 @@ class MusicPlayer:
             self.current = source
 
             self._guild.voice_client.play(source, after=lambda _: self.bot.loop.call_soon_threadsafe(self.next.set))
-            self.np = await self._channel.send(f':musical_note: | Now Playing: **{source.title}** Requested by: **{source.requester}**')
+
             await self.next.wait()
 
             source.cleanup()
