@@ -316,9 +316,9 @@ async def presence():
                 if u.bot == False:
                     a = a + 1
 
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='%s servers | f?help' % (len(bot.guilds))))
-        await sleep(30)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.playing, name='%s users | f?help' % (len(bot.users))))
+        await sleep(30)
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name='%s servers | f?help' % (len(bot.guilds))))
         await sleep(30)
 
 
