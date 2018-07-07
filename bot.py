@@ -113,7 +113,7 @@ async def help(ctx):
 @bot.listen()
 async def on_message(message : discord.Message):
     if bot.user.mentioned_in(message):
-        await message.channel.send(':sleeping: | You woke me up :( . My prefix is `e!` , for a list of commands type `e!help`', delete_after=10)
+        await message.channel.send(':sleeping: | You woke me up :( . My prefix is `f?` , for a list of commands type `e!help`', delete_after=10)
 
 @bot.listen()
 async def on_command_error(ctx, error):
@@ -153,7 +153,7 @@ async def search(ctx, *, query):
 @bot.command()
 async def say(ctx, *, message):
     """Make the BOT say what you want"""
-    await ctx.send(f' ** {ctx.author.name} said: ** {message}')
+    await ctx.send(f' {message}')
 
 @commands.is_owner()
 @bot.command()
