@@ -104,16 +104,6 @@ async def help(ctx):
 **f?purge** : Clears a number of messages (works only if the player has the Manage Channels perm.)
 """)
 
-  
-
- 
-
- 
-
-@bot.listen()
-async def on_message(message : discord.Message):
-    if bot.user.mentioned_in(message):
-        await message.channel.send(':sleeping: | You woke me up :( . My prefix is `f?` , for a list of commands type `e!help`', delete_after=10)
 
 @bot.listen()
 async def on_command_error(ctx, error):
