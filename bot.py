@@ -206,11 +206,11 @@ async def avatar(ctx, member: discord.Member=None):
 
 
 
-@commands.cooldown(1, 5, commands.BucketType.user)
 @bot.command()
 async def invite(ctx):
-    """Gives you the BOT invite link."""
-    await ctx.send(f"Invite  **{ctx.me.name}** https://discordapp.com/api/oauth2/authorize?client_id=464711725589987338&permissions=8&scope=bot")
+    em = discord.Embed(title="", color=discord.Colour.blue())
+    em.add_field(name="Invite **Flash**", value='[Invite]( https://discordapp.com/api/oauth2/authorize?client_id=464711725589987338&permissions=8&scope=bot )')
+    await ctx.send(embed=em)
 
 @commands.cooldown(1, 5, commands.BucketType.user)
 @bot.command()
