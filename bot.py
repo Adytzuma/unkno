@@ -12,7 +12,7 @@ from asyncio import sleep
 
 
 logging.basicConfig(level='INFO')
-bot = commands.Bot(command_prefix='f?')
+bot = commands.Bot(command_prefix='u?')
 bot.remove_command('help')
 bot.load_extension("music")
 bot.load_extension("admin")
@@ -52,12 +52,6 @@ async def kick(ctx, member: discord.Member = None, *, reason = None):
 async def botcheck(ctx):
     return not ctx.message.author.bot
 
-@bot.command()
-@commands.has_role('|| 𝕰lite 𝕾taff ||')
-async def report(ctx, *, message):
-    await ctx.message.delete()
-    await ctx.guild.get_member(405337137735663618).send(f"{ctx.author.name} a raportat: {message}")
-
 @commands.cooldown(1, 5, commands.BucketType.user)     
 @bot.command()
 @commands.has_permissions(ban_members=True)
@@ -88,21 +82,21 @@ async def purge(ctx, number : int):
 @bot.command()
 async def help(ctx):
     await ctx.send("""   Flash commands:
-**f?say** : Make the bot say whatever you want
-**f?ping** : Check the bot latency
-**f?search** : Search something on Google
-**f?avatar** : Get a player's avatar
-**f?8ball** : Ask the Magic 8-Ball)
-**f?playerinfo @<member>** : Get a member`s info
-**f?serverinfo** Get a guild/server info
-**f?botinfo** : Get the bot info
-**f?lenny** : Just a lenny face
-**f?respect** : Pay #respect)
-**f?kick** : Kick a member (works only if the player has the Kick perm.)
-**f?ban** : Ban a member (works only if the player has the Ban perm.)
-**f?mass** : Sends a message to all members in a guild (BOT Owner only)
-**f?shutdown** : Shuts down the bot (BOT Owner only)
-**f?purge** : Clears a number of messages (works only if the player has the Manage Channels perm.)
+**u?say** : Make the bot say whatever you want
+**u?ping** : Check the bot latency
+**u?search** : Search something on Google
+**u?avatar** : Get a player's avatar
+**u?8ball** : Ask the Magic 8-Ball)
+**u?playerinfo @<member>** : Get a member`s info
+**u?serverinfo** Get a guild/server info
+**u?botinfo** : Get the bot info
+**u?lenny** : Just a lenny face
+**u?respect** : Pay #respect)
+**u?kick** : Kick a member (works only if the player has the Kick perm.)
+**u?ban** : Ban a member (works only if the player has the Ban perm.)
+**u?mass** : Sends a message to all members in a guild (BOT Owner only)
+**u?shutdown** : Shuts down the bot (BOT Owner only)
+**u?purge** : Clears a number of messages (works only if the player has the Manage Channels perm.)
 """)
 
 
@@ -200,7 +194,7 @@ async def avatar(ctx, member: discord.Member=None):
 @bot.command()
 async def invite(ctx):
     em = discord.Embed(title="", color=discord.Colour.blue())
-    em.add_field(name="Invite **Flash**", value='[Invite]( https://discordapp.com/api/oauth2/authorize?client_id=464711725589987338&permissions=8&scope=bot )')
+    em.add_field(name="Invite ***Unknown Jr***", value='[Invite]( https://discordapp.com/api/oauth2/authorize?client_id=469047790094385174&permissions=8&scope=bot )')
     await ctx.send(embed=em)
 
 @commands.cooldown(1, 5, commands.BucketType.user)
