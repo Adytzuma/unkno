@@ -81,7 +81,7 @@ async def purge(ctx, number : int):
 @commands.cooldown(1, 5, commands.BucketType.user)
 @bot.command()
 async def help(ctx):
-    await ctx.send("""   Flash commands:
+    await ctx.send("""   ***Unknown Jr Commands:***
 **u?say** : Make the bot say whatever you want
 **u?ping** : Check the bot latency
 **u?search** : Search something on Google
