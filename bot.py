@@ -47,6 +47,31 @@ async def kick(ctx, member: discord.Member = None, *, reason = None):
         await member.kick()
         await ctx.send(f':white_check_mark: | **{member}** just got kicked.')
 
+@bot.listen()
+async def on_member_join(member):
+    if member.guild.id == 461953532019605504:      
+        e = discord.Embed(color=discord.Colour.blue())
+        e.add_field(name=':hugging: Welcome!', value=member.mention, inline=False)
+        e.add_field(name=':tools: Info:', value=f'**Bine ai venit pe {member.guild.name}! Nu uita sa citesti <#461959981936148511>. Speram sa te distrezi alaturi de noi! Acum suntem {member.guild.member_count}**', inline=False)
+        e.set_thumbnail(url=member.avatar_url)
+        await bot.get_guild(461953532019605504).get_channel(470916620332695562).send(embed=e)
+    if member.guild.id != 461953532019605504:
+        return
+
+
+
+
+
+@bot.listen()
+async def on_member_remove(member):
+    if member.guild.id == 461953532019605504:      
+        e = discord.Embed(color=discord.Colour.blue())
+        e.add_field(name=':sob: Goodbye!', value=member.mention, inline=False)
+        e.add_field(name=':tools: Info:', value=f'Speram sa te mai intorci pe la noi ... Esti mereu bine venit ! Acum Suntem {member.guild.member_count} :sob: :pensive:', inline=False)
+        e.set_thumbnail(url=member.avatar_url)
+        await bot.get_guild(461953532019605504).get_channel(470916620332695562).send(embed=e)
+    if member.guild.id != 461953532019605504:
+        return
 
 @bot.check
 async def botcheck(ctx):
