@@ -52,7 +52,7 @@ async def on_member_join(member):
     if member.guild.id == 461953532019605504:      
         e = discord.Embed(color=discord.Colour.blue())
         e.add_field(name=':hugging: Welcome!', value=member.mention, inline=False)
-        e.add_field(name=':tools: Info:', value=f'**Bine ai venit pe {member.guild.name}! Nu uita sa citesti <#461959981936148511>. Speram sa te distrezi alaturi de noi! Acum suntem {member.guild.member_count}**', inline=False)
+        e.add_field(name=':tools: Info:', value=f'**Bine ai venit pe {member.guild.name}! Nu uita sa citesti <#483922676767784969>. Speram sa te distrezi alaturi de noi! Acum suntem {member.guild.member_count}**', inline=False)
         e.set_thumbnail(url=member.avatar_url)
         await bot.get_guild(461953532019605504).get_channel(470916620332695562).send(embed=e)
     if member.guild.id != 461953532019605504:
@@ -219,7 +219,7 @@ async def avatar(ctx, member: discord.Member=None):
 @bot.command()
 async def invite(ctx):
     em = discord.Embed(title="", color=discord.Colour.blue())
-    em.add_field(name="Invite ***Unknown Jr***", value='[Invite]( https://discordapp.com/api/oauth2/authorize?client_id=469047790094385174&permissions=8&scope=bot )')
+    em.add_field(name="Invite ***Unknown Jr***", value='[Invite]( https://discordapp.com/api/oauth2/authorize?client_id=484007772828991498&permissions=8&scope=bot )')
     await ctx.send(embed=em)
 
 @commands.cooldown(1, 5, commands.BucketType.user)
