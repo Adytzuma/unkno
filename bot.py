@@ -49,13 +49,13 @@ async def kick(ctx, member: discord.Member = None, *, reason = None):
 
 @bot.listen()
 async def on_member_join(member):
-    if member.guild.id == 461953532019605504:      
+    if member.guild.id == 506442512064446475:      
         e = discord.Embed(color=discord.Colour.blue())
         e.add_field(name=':hugging: Welcome!', value=member.mention, inline=False)
         e.add_field(name=':tools: Info:', value=f'**Bine ai venit pe {member.guild.name}! Nu uita sa citesti <#483922676767784969>. Speram sa te distrezi alaturi de noi! Acum suntem {member.guild.member_count}**', inline=False)
         e.set_thumbnail(url=member.avatar_url)
-        await bot.get_guild(461953532019605504).get_channel(470916620332695562).send(embed=e)
-    if member.guild.id != 461953532019605504:
+        await bot.get_guild(506442512064446475).get_channel(483922445359775754).send(embed=e)
+    if member.guild.id != 506442512064446475:
         return
 
 
@@ -64,13 +64,13 @@ async def on_member_join(member):
 
 @bot.listen()
 async def on_member_remove(member):
-    if member.guild.id == 461953532019605504:      
+    if member.guild.id == 506442512064446475:      
         e = discord.Embed(color=discord.Colour.blue())
         e.add_field(name=':sob: Goodbye!', value=member.mention, inline=False)
         e.add_field(name=':tools: Info:', value=f'Speram sa te mai intorci pe la noi ... Esti mereu bine venit ! Acum Suntem {member.guild.member_count} :sob: :pensive:', inline=False)
         e.set_thumbnail(url=member.avatar_url)
-        await bot.get_guild(461953532019605504).get_channel(470916620332695562).send(embed=e)
-    if member.guild.id != 461953532019605504:
+        await bot.get_guild(506442512064446475).get_channel(483922445359775754).send(embed=e)
+    if member.guild.id != 506442512064446475:
         return
 
 @bot.check
@@ -344,7 +344,7 @@ async def botinfo(ctx):
     em.add_field(name="Prefix", value=ctx.bot.command_prefix, inline=True)
     em.add_field(name="Made with", value='Python 3.6.5', inline=True)
     em.add_field(name="Tag:", value=ctx.me.discriminator, inline=True)
-    em.add_field(name="Creator", value='<@405337137735663618>', inline=True)
+    em.add_field(name="Creator", value='<@474527438278230036>', inline=True)
     em.add_field(name="Created at", value=ctx.bot.user.created_at, inline=True)
     em.set_thumbnail(url=ctx.me.avatar_url)
     msg = await ctx.send(embed=em)
@@ -364,7 +364,7 @@ async def binfo(ctx):
     em.add_field(name="Prefix", value=ctx.bot.command_prefix, inline=True)
     em.add_field(name="Made with", value='Python 3.6.5', inline=True)
     em.add_field(name="Tag:", value=ctx.me.discriminator, inline=True)
-    em.add_field(name="Creator", value='<@405337137735663618>', inline=True)
+    em.add_field(name="Creator", value='<@474527438278230036>', inline=True)
     em.add_field(name="Created at", value=ctx.bot.user.created_at, inline=True)
     em.set_thumbnail(url=ctx.me.avatar_url)
     msg = await ctx.send(embed=em)
