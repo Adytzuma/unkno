@@ -52,7 +52,7 @@ async def on_member_join(member):
     if member.guild.id == 483922445359775754:      
         e = discord.Embed(color=discord.Colour.blue())
         e.add_field(name=':hugging: Welcome!', value=member.mention, inline=False)
-        e.add_field(name=':tools: Info:', value=f'**Bine ai venit pe {member.guild.name}! Nu uita sa citesti <483922676767784969>. Speram sa te distrezi alaturi de noi! Acum suntem {member.guild.member_count}**', inline=False)
+        e.add_field(name=':tools: Info:', value=f'**Bine ai venit pe {member.guild.name}! Nu uita sa citesti <#483922676767784969>. Speram sa te distrezi alaturi de noi! Acum suntem {member.guild.member_count}**', inline=False)
         e.set_thumbnail(url=member.avatar_url)
         await bot.get_guild(483922445359775754).get_channel(506442512064446475).send(embed=e)
     if member.guild.id != 483922445359775754:
