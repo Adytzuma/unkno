@@ -139,7 +139,7 @@ async def on_command_error(ctx, error):
 
 @bot.command()
 async def support(ctx):
-      await ctx.send('https://discord.gg/7H9FKNE')
+      await ctx.send('https://discord.gg/Kd67kED')
 
 
 @commands.cooldown(1, 5, commands.BucketType.user)
